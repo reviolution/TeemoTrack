@@ -6,7 +6,8 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-flask = "*"
+cassiopeia = "*"
+django = "*"
 
 [requires]
 python_version = "3.7"
