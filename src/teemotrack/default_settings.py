@@ -11,6 +11,27 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta as td
+
+CASSIOPEIA_DEFAULT_REGION = 'EUW'
+
+CASSIOPEIA_RIOT_API_KEY = 'RIOTAPIKEY'
+
+CASSIOPEIA_PIPELINE = {
+    "Omnistone": {
+        "EXPIRATIONS_MAP" : {
+            td(hours=3): ["c", "c+", "r", "r+", "cr", "i", "i+", "pi", "pi+"],
+            td(hours=6): ["rl", "v", "ss", "ss+", "mp", "mp+", "ls", "ls+"],
+            0: ["*+"]
+        },
+        "MAX_ENTRIES": 6000,
+        "CULL_FRECUENCY": 2,
+        "SAFE_CHECK": True,
+        "LOGS_ENABLED": False,
+    },
+    "DDragon": {},
+    "RiotAPI": {},
+}
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,6 +52,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'teemotrack_frontend.apps.TeemotrackFrontendConfig',
+    'django_cassiopeia',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
