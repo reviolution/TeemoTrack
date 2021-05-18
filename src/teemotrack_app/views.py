@@ -6,7 +6,7 @@ from .models import Summoner
 # Create your views here.
 
 def index(request):
-    return render(request, 'teemotrack_frontend/index.html')
+    return render(request, 'teemotrack_app/index.html')
 
 def add_summoner(request, summoner_name):
     cass_summoner = cass.get_summoner(name=summoner_name)

@@ -19,5 +19,5 @@ from django.urls.conf import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('teemotrack_frontend.urls'))
+    path('', include('teemotrack_app.urls'))
 ]

@@ -52,7 +52,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'teemotrack_frontend.apps.TeemotrackFrontendConfig',
+    'teemotrack_app.apps.TeemotrackAppConfig',
     'django_cassiopeia',
     'django.contrib.admin',
     'django.contrib.auth',

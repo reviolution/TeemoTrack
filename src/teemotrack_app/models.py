@@ -1,5 +1,4 @@
 from django.db import models
-from django_cassiopeia import cassiopeia as cass
 
 
 class Summoner(models.Model):
