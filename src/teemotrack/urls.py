@@ -16,8 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls.conf import include
+import teemotrack_app.daemon as teemotrack_daemon
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('teemotrack_app.urls'))
 ]
+
+teemotrack_daemon.start_thread()
