@@ -4,6 +4,12 @@
         <title></title>
     </head>
     <body>
-        
+        <p> uwu </p>
+        <form action="/createSummonerList/" method="post">
+            {% csrf_token %}
+            <input id="name" type="text" name="name">
+            <input id="summoners" type="text" name="summoners">
+            <input type="submit" value="Ok">
+        </form>
     </body>
 </html>

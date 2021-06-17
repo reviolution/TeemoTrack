@@ -1,7 +1,7 @@
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-from django_cassiopeia import cassiopeia as cass
-from .models import Summoner
+from . import db_operations
+from .models import Summoner, SummonerList
 from teemotrack.settings import DEBUG
 
 # Create your views here.
@@ -12,10 +12,15 @@ def index(request):
 def debug(request):
     if not DEBUG:
         return HttpResponse('Nice try ;)')
-    return HttpResponse('No error lol')
+    return render(request, 'teemotrack_app/debug.html')
 
-def add_summoner(request, summoner_name):
-    cass_summoner = cass.get_summoner(name=summoner_name)
-    db_summoner = Summoner(summoner_id=cass_summoner.id, summoner_name=cass_summoner.name)
-    db_summoner.save()
-    return HttpResponse('Added Summoner ' + db_summoner.summoner_name + ' with id ' + db_summoner.summoner_id)
+
+def create_summoner_list(request):
+    try:
+        name = request.POST['name']
+        summoners = request.POST['summoners']
+    except ():
+        return HttpResponse('xd')
+
+    summ_list = db_operations.create_summoner_list(name, summoners)
+    return HttpResponseRedirect('/list/' + summ_list.name)

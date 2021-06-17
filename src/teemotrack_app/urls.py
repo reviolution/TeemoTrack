@@ -3,6 +3,6 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('addSummoner/<str:summoner_name>', views.add_summoner, name='addSummoner'),
+    path('createSummonerList/', views.create_summoner_list, name='createSummonerList'),
     path('debug', views.debug, name='debug'),
 ]
