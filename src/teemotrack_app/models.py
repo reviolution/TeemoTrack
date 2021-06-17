@@ -15,3 +15,8 @@ class RankDataPoint(models.Model):
     division = models.CharField(max_length=2)
     tier = models.TextField()
     league_points = models.IntegerField()
+
+
+class SummonerList(models.Model):
+    name = models.TextField(max_length=64, primary_key=True)
+    summoners = models.ManyToManyField(Summoner)

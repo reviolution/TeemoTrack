@@ -1,7 +1,3 @@
-from cassiopeia import data
-from cassiopeia.core import summoner
-from cassiopeia.data import Rank
-from django import db
 from .models import Summoner, RankDataPoint
 from django_cassiopeia import cassiopeia as cass
 from datetime import datetime
