@@ -12,7 +12,7 @@
             </form>
         </div>
         <div id="createListDiv">
-            <form action="/createSummonerList/" method="post">
+            <form action="/api/createSummonerList/" method="post">
                 {% csrf_token %}
                 <input id="name" type="text" name="name">
                 <input id="summoners" type="text" name="summoners">

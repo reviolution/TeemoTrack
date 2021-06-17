@@ -1,5 +1,6 @@
-from django.http.response import HttpResponse, HttpResponseRedirect
+from django.http.response import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
+from django.core import serializers
 from . import db_operations
 from .models import Summoner, SummonerList
 from teemotrack.settings import DEBUG
@@ -16,7 +17,8 @@ def debug(request):
 
 
 def list(request, listname):
-    return HttpResponse(listname)
+    context = {}
+    return render(request, 'teemotrack_app/list.html', context)
 
 
 def create_summoner_list(request):
@@ -36,3 +38,7 @@ def list_redirect(request):
     except KeyError:
         return HttpResponse('xd')
     return HttpResponseRedirect('/list/' + listname)
+
+
+def get_data_for_list(request, listname):
+    return HttpResponse(db_operations.get_summoner_list_as_json(listname), content_type="application/json")
