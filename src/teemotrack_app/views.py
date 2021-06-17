@@ -15,12 +15,24 @@ def debug(request):
     return render(request, 'teemotrack_app/debug.html')
 
 
+def list(request, listname):
+    return HttpResponse(listname)
+
+
 def create_summoner_list(request):
     try:
         name = request.POST['name']
         summoners = request.POST['summoners']
-    except ():
+    except KeyError:
         return HttpResponse('xd')
 
     summ_list = db_operations.create_summoner_list(name, summoners)
     return HttpResponseRedirect('/list/' + summ_list.name)
+
+
+def list_redirect(request):
+    try:
+        listname = request.GET['listname']
+    except KeyError:
+        return HttpResponse('xd')
+    return HttpResponseRedirect('/list/' + listname)

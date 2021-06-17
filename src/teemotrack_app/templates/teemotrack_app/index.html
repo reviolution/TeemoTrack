@@ -4,12 +4,20 @@
         <title></title>
     </head>
     <body>
-        <p> uwu </p>
-        <form action="/createSummonerList/" method="post">
-            {% csrf_token %}
-            <input id="name" type="text" name="name">
-            <input id="summoners" type="text" name="summoners">
-            <input type="submit" value="Ok">
+        <div id ="top" />
+        <div id="viewListDiv">
+            <form action="/list/" method="get">
+                <input id="listname" type="text" name="listname">
+                <input type="submit" value="Go">
+            </form>
+        </div>
+        <div id="createListDiv">
+            <form action="/createSummonerList/" method="post">
+                {% csrf_token %}
+                <input id="name" type="text" name="name">
+                <input id="summoners" type="text" name="summoners">
+                <input type="submit" value="Ok">
         </form>
+        </div>
     </body>
 </html>
